@@ -1,10 +1,11 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable react/display-name */
-import { Drawer, Layout, useDevice } from "@gamiui/standard";
+import styled from "@emotion/styled";
+import { Container, Drawer, Layout, useDevice } from "@gamiui/standard";
 
 import React, { Fragment, useState } from "react";
+import Aside from "../layouts/Aside";
 import Footer from "../layouts/Footer";
-import Sidebar from "../layouts/Sidebar";
 import Topbar from "../layouts/Topbar";
 
 interface Props {
@@ -23,6 +24,10 @@ const defaultProps = {
   FooterChildren: Footer,
   hasSidebar: true,
 };
+
+const LayoutBody = styled(Container)`
+  padding: 0 1rem;
+`;
 
 const WithLayout =
   ({
@@ -51,16 +56,20 @@ const WithLayout =
             </Layout.Header>
           )}
 
-          <Drawer
-            style={{ padding: "1rem 0" }}
-            onClose={() => setOpen(!open)}
-            open={open}
-          >
-            <Sidebar />
-          </Drawer>
+          {device !== "desktop" && (
+            <Drawer
+              style={{ padding: "1rem 0" }}
+              onClose={() => setOpen(!open)}
+              open={open}
+            >
+              <Aside />
+            </Drawer>
+          )}
 
           <Layout.Content>
-            <WrappedComponent {...componentProps} />
+            <LayoutBody>
+              <WrappedComponent {...componentProps} />
+            </LayoutBody>
           </Layout.Content>
           {hasFooter && <Layout.Footer>{<FooterChildren />}</Layout.Footer>}
         </Layout>

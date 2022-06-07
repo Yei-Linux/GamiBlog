@@ -6,7 +6,7 @@ const Topics = () => {
   return (
     <Container>
       <Container>
-        <Title level="h2">Last Dev Posts</Title>
+        <Title level="h2">Last Dev Posts 💪</Title>
       </Container>
       {topics.map(({ title, description, tags, releaseDate, src, link }) => (
         <Topic

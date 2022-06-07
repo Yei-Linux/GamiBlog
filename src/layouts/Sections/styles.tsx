@@ -10,7 +10,20 @@ export const Body = styled(Container)`
 
 export const Sections = styled(Container)`
   display: grid;
+  grid-gap: 1rem;
   grid-template-areas: "aside aside body body body";
 
   grid-template-rows: auto;
+  grid-template-columns:
+    minmax(auto, 100px) minmax(auto, 100px) minmax(auto, 300px)
+    minmax(auto, 300px) minmax(auto, 300px);
+
+  .not__aside {
+    grid-template-areas: "body body body body body";
+
+    grid-template-columns:
+      minmax(auto, 180px) minmax(auto, 180px)
+      minmax(auto, 180px)
+      minmax(auto, 180px) minmax(auto, 180px);
+  }
 `;

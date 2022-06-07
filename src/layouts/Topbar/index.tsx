@@ -23,7 +23,7 @@ const LinkItem = styled(Link)`
   background: transparent;
 `;
 
-const Topbar = ({ toggle, hasSidebar }: ITopbar) => {
+const Topbar = ({ toggle }: ITopbar) => {
   const { device } = useDevice();
 
   return (
@@ -62,10 +62,12 @@ const Topbar = ({ toggle, hasSidebar }: ITopbar) => {
               <Icon name="github" size="20px" />
             </LinkItem>
 
-            <Fragment>
-              <Spacer direction="left" />
-              <Icon onClick={toggle} name="hamburger" size="20px" />
-            </Fragment>
+            {device !== "desktop" && (
+              <Fragment>
+                <Spacer direction="left" />
+                <Icon onClick={toggle} name="hamburger" size="20px" />
+              </Fragment>
+            )}
           </Row>
         </S.TopbarRight>
       </Row>
